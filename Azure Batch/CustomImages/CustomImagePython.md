@@ -6,9 +6,9 @@ This script takes the example Python script from the <a href="https://docs.micro
 
 ## Pre-Requisites
 
-In <a href="https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImageCLI.md">recipe 1</a>, we showed you how to create all the resources needed to create a batch pool with a custom image. In this you will need to execute steps 1-3 in recipe 1 and have created your resource group storage account, batch account and service principal. 
+In <a href="https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImageCLI.md">recipe 1</a>, we showed you how to create all of the configuration and infrastructure objects needed to create a batch pool with a custom image. In this recipe, you will need to execute steps 1-3 in recipe 1 and create your resource group storage account, batch account and service principal before you begin. 
 
-In addition to the pre-reqs from recipe 1, you also need to check you have the <a href="https://pypi.python.org/pypi/azure-batch">azure-batch==4.0</a> python API installed: 
+In addition to the pre-reqs from recipe 1, you also need to check you have the <a href="https://pypi.python.org/pypi/azure-batch">azure-batch==4.0</a> python API installed in order to use the new CustomImage feature: 
 ```
 $ pip freeze | grep batch
 azure-batch==4.0.0
@@ -66,7 +66,7 @@ $ az batch account show --name mkbatchwe --resource-group mkbatchwegrp --output 
 ```
 If you did not record the password for the Service Principal, you will need to go to the portal and generate another one, or recreate the sp from the command line again. 
 
-Get the Azure Batch Account Key: 
+Get the Azure Batch Account Key (you only need the "primary" key): 
 ```
 $ az batch account keys list --name mkbatchwe --resource-group mkbatchwegrp --output json
 { 
@@ -105,7 +105,7 @@ Once you have all of the values together, simply edit <a href="https://github.co
 
 ## Step 2: Execute the script
 
-Note that the jobs/tasks are a littee meaningless here, but we have left them in to keep this as close to the tutorial examples as possible. You can replace them with some namd, gromacs & amber command lines + input data as necessary. 
+Note that the jobs/tasks are a little meaningless here, but we have left them in to keep this as close to the tutorial examples as possible. You can replace them with some namd, gromacs & amber command lines + input data as necessary. 
 ```
 $ python3 custompoolexample.py
 Sample start: 2017-11-18 06:47:34
@@ -135,5 +135,4 @@ Delete pool? [Y/n] Y
 Press ENTER to exit...
 $
 ```
-
 Monitor the pool creation and the jobs in your Batch Labs GUI, and it should line up with the output from the python script. 
