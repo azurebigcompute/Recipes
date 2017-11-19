@@ -1,0 +1,14 @@
+{
+        "id": "WEPool001",
+        "vmSize": "Standard_NC6",
+        "virtualMachineConfiguration": {
+            "imageReference": {
+                "virtual_machine_image_id": "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/mkbatchwegrp/providers/Microsoft.Compute/images/CHPCLinux",
+		"publisher": "OpenLogic",
+		"offer": "CentOS",
+		"sku": "7.1"				
+            },
+            "nodeAgentSKUId": "batch.node.centos 7"
+        },
+        "targetDedicatedNodes": 0
+}
