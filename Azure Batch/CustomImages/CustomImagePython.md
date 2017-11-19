@@ -6,7 +6,7 @@ This script takes the example Python script from the <a href="https://docs.micro
 
 ## Pre-Requisites
 
-In <a href="https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImageCLI.md">recipe 1</a>, we showed you how to create all of the configuration and infrastructure objects needed to create a batch pool with a custom image. In this recipe, you will need to execute steps 1-3 in recipe 1 and create your resource group storage account, batch account and service principal before you begin. 
+In <a href="https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImageCLI.md">recipe 1</a>, we showed you how to create all of the configuration and infrastructure objects needed to create a batch pool with a custom image. In this recipe, you will need to execute steps 1-4 in recipe 1 and create your resource group storage account, batch account and service principal before you begin, as well as preparing your CustomImage. 
 
 In addition to the pre-reqs from recipe 1, you also need to check you have the <a href="https://pypi.python.org/pypi/azure-batch">azure-batch==4.0</a> python API installed in order to use the new CustomImage feature: 
 ```
@@ -26,24 +26,22 @@ and check again.
 
 ## Step 1: Gather the Keys and Configuration
 
-Before we start, we need to first gather together all of the information necessary to have <a href="https://github.com/azurebigcompute/Recipes/blob/master/Azure%20Batch/CustomImages/custompoolexample.py">our example python script</a> authenticate and communicate with all of the batch features. This is a bit tedious, but generally you will need to do this the first time, and after that just cut & paste the values into your various scripts. 
+Before we start, we need to first gather together all of the information necessary to have <a href="https://github.com/azurebigcompute/Recipes/blob/master/Azure%20Batch/CustomImages/custompoolexample.py">our example python script</a> authenticate and communicate with all of the batch features. This is slightly tedious, but generally you will need to do this only the first time, and after that you can just cut & paste the values into your various scripts. 
 
-You will notice a section at the top of the python script:
+You will notice a section at the top of the python script that you are going to edit with your own values: 
 ```
 _BATCH_ACCOUNT_NAME = 'mikebatchwe'
 _BATCH_ACCOUNT_KEY = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=='
 _BATCH_ACCOUNT_URL = 'https://mkbatchwe.westeurope.batch.azure.com'
-
 _STORAGE_ACCOUNT_NAME = 'mkbatchwestore'
 _STORAGE_ACCOUNT_KEY = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=='
-
 _BATCH_CLIENT_ID='XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'         #-- Application ID ("appId")
 _BATCH_SECRET='XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
 _BATCH_TENANT_ID='XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
 _BATCH_PRINCIPAL='mkbatchappwe'
 _BATCH_PRINCIPAL_URL='http://mkbatchappwe'
 ```
-We have to trawl these values from a few Azure CLI commands
+We have to extract these values from a couple of Azure CLI commands.
 
 Firstly, from the service principal creation you did earlier (see recipe 1) you have much of the information needed. 
 
