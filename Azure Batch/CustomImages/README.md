@@ -5,9 +5,9 @@ Custom Images avoid the overhead of installing applications dynamically, which c
 
 These pages describe in more detail the steps necessary to deploy Azure Batch with Custom Images:
 
-* <b>Recipe 1: </b><a href="https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImageCLI.md">Using the Azure Batch CLI</a>
+* <b>Recipe 1: </b><a href="https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImageCLI.md">Deploy a Custom Image using the Azure Batch CLI</a>
 
-* <b>Recipe 2: </b><a href="https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md">Using a Python API script. </a>
+* <b>Recipe 2: </b><a href="https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md">Deploy a Custom Image using a Python API script. </a>
 </b>
 
 In both recipes we are deploying the same CentOS 7.1 Image with some preinstalled chemistry applications (NAMD, Gromacs & Amber), that we want to deploy on Azure GPU instances. The recipes are adaptable to any type of VM or Operating System. 
